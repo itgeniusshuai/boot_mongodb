@@ -17,8 +17,8 @@ public class MongoTest {
 		MongoClient client = new MongoClient("192.168.1.107", 27017);
 		MongoDatabase db = client.getDatabase("auction");  
 	    System.out.println("Connect to database successfully");
-	    //db.createCollection("user");
-	    MongoCollection<Document> collection = db.getCollection("user");
+	    db.createCollection("car");
+	    MongoCollection<Document> collection = db.getCollection("car");
 		BeanInfo beanInfo = Introspector.getBeanInfo(Car.class);
 		PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
 	    for(int i = 0; i < 500000; i++){
@@ -31,6 +31,5 @@ public class MongoTest {
 	    	System.out.println(document);
 	    	collection.insertOne(document);
 	    }
-
 	}
 }
