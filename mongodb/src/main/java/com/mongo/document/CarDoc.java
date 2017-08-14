@@ -3,8 +3,8 @@ package com.mongo.document;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="car")
 public class CarDoc implements Serializable{
@@ -13,7 +13,7 @@ public class CarDoc implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2521905776373135264L;
-	@Id
+	@Field("id")
 	private String id;
 	private String carName;
 	private Integer cityId;

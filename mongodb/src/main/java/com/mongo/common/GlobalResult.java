@@ -5,6 +5,10 @@ public class GlobalResult {
 	private String msg;
 	private Object data;
 	
+	public static GlobalResult ok(){
+		return new GlobalResult(1, "接口访问成功！！！");
+	}
+	
 	public static GlobalResult ok(Object data){
 		return new GlobalResult(1, data);
 	}

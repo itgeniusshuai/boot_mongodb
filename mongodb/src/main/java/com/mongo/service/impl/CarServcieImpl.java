@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -37,6 +38,26 @@ public class CarServcieImpl implements CarService{
 //			mongoTemplate.count(query, CarDoc.class);
 			List<CarDoc> list = mongoTemplate.find(query, CarDoc.class);
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+
+	@Override
+	public int update(CarDoc carDoc) {
+		try {
+			Query query = new Query(Criteria.where("id").is(carDoc.getId()));
+			Update update = new Update();
+			BeanInfo beanInfo = Introspector.getBeanInfo(CarDoc.class);
+			PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+			for(PropertyDescriptor pdf : propertyDescriptors){
+				Object result = pdf.getReadMethod().invoke(carDoc);
+				if("class".equals(pdf.getName()) || StringUtils.isEmpty(result)) continue;
+				update.set(pdf.getName(), result);
+			}
+			mongoTemplate.updateFirst(query, update, CarDoc.class);
+			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
