@@ -1,32 +1,37 @@
 package com.mongo.document;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="car")
-public class CarDoc {
+public class CarDoc implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2521905776373135264L;
 	@Id
-	private int id;
+	private String id;
 	private String carName;
 	private Integer cityId;
-	private long price;
+	private Long price;
 	private Date sessionTime;
 	private Date registerTime;
 	private Date checkTime;
 	private Integer brandId;
 	private Integer carDepartmentId;
 	private Integer carModelId;
-	private long mileage;// 里程数
+	private Long mileage;// 里程数
 	private String license;//车牌号
 	private Integer conditionGrade;//车况评级
 	public CarDoc() {
 		super();
 	}
-	public CarDoc(int id, String carName, Integer cityId, long price, Date sessionTime, Date registerTime,
-			Date checkTime, Integer brandId, Integer carDepartmentId, Integer carModelId, long mileage,
+	public CarDoc(String id, String carName, Integer cityId, Long price, Date sessionTime, Date registerTime,
+			Date checkTime, Integer brandId, Integer carDepartmentId, Integer carModelId, Long mileage,
 			String license, Integer conditionGrade) {
 		super();
 		this.id = id;
@@ -43,10 +48,10 @@ public class CarDoc {
 		this.license = license;
 		this.conditionGrade = conditionGrade;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getCarName() {
@@ -61,10 +66,10 @@ public class CarDoc {
 	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
 	}
-	public long getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(long price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 	public Date getSessionTime() {
@@ -103,10 +108,10 @@ public class CarDoc {
 	public void setCarModelId(Integer carModelId) {
 		this.carModelId = carModelId;
 	}
-	public long getMileage() {
+	public Long getMileage() {
 		return mileage;
 	}
-	public void setMileage(long mileage) {
+	public void setMileage(Long mileage) {
 		this.mileage = mileage;
 	}
 	public String getLicense() {
@@ -121,5 +126,8 @@ public class CarDoc {
 	public void setConditionGrade(Integer conditionGrade) {
 		this.conditionGrade = conditionGrade;
 	}
-
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }
