@@ -1,4 +1,4 @@
-package com.mongo;
+package com.mongo.utils;
 
 
 import java.beans.BeanInfo;
@@ -7,7 +7,7 @@ import java.beans.PropertyDescriptor;
 
 import org.bson.Document;
 
-import com.mongo.CarGenerator.Car;
+import com.mongo.utils.CarGenerator.Car;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;

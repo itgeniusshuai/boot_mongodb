@@ -1,4 +1,4 @@
-package com.mongo;
+package com.mongo.utils;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
