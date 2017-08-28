@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mongo.common.GlobalResult;
+import com.mongo.document.CarConditionDoc;
 import com.mongo.document.CarDoc;
 import com.mongo.repository.CarRepository;
 import com.mongo.service.CarService;
@@ -36,9 +38,19 @@ public class CarController {
 	@RequestMapping("/find")
 	public GlobalResult find(CarDoc carDoc){
 		List<CarDoc> list = null;
-		for(int i = 0; i < 500; i++){
+		for(int i = 0; i < 100; i++){
 			list = carService.findByCondition(carDoc);
 		}
+		return GlobalResult.ok(list);
+	}
+	@RequestMapping("/findByCondition")
+	public GlobalResult findByCondition(@RequestBody CarConditionDoc carConditionDoc){
+		List<CarDoc> list = carService.findByCondition(carConditionDoc);
+		return GlobalResult.ok(list);
+	}
+	@RequestMapping("/findByExample")
+	public GlobalResult findByExample(CarDoc carDoc){
+		List<CarDoc> list = carService.findByCondition(carDoc);
 		return GlobalResult.ok(list);
 	}
 	

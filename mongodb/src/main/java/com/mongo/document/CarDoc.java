@@ -7,10 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="car")
-public class CarDoc implements Serializable{
+public class CarDoc implements Serializable {
 
 	/**
-	 * 
+	 * car do
 	 */
 	private static final long serialVersionUID = -2521905776373135264L;
 	@Field("id")

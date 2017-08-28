@@ -21,7 +21,7 @@ public class CarGenerator {
 		now.add(Calendar.MONTH, +-random.nextInt(3));
 		Date registerTime = now.getTime();
 		CarDoc car = new CarDoc(id, carNames[random.nextInt(carNameSize)], random.nextInt(10000), 
-				random.nextLong(), sessionTime, registerTime, checkTime, 
+				(long)random.nextInt(20), sessionTime, registerTime, checkTime, 
 				random.nextInt(1000), random.nextInt(10000), random.nextInt(100000), 
 				random.nextLong(), ""+(int)(random.nextDouble()*1000000), random.nextInt(5));
 		return car;
